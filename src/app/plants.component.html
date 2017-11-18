@@ -1,0 +1,25 @@
+<div>
+    <ul class='plants'>
+        <li *ngFor='let plant of plants' (click)='onSelect(plant)' [class.selected]='plant===selectedPlant'>
+            <div class='plant-element'>
+                <button class="delete-button" (click)="deletePlant(plant)">Delete</button>
+                <div class='name'>{{plant?.name}}</div>
+                <div class='light'>{{plant?.light}}</div>
+            </div>
+        </li>
+    </ul>
+    <div class='editarea'>
+        <div>
+            <div *ngIf="selectedPlant" class='editplant'>
+                <div>
+                    <label for="name">name:</label>
+                    <input [(ngModel)]="selectedPlant.name">
+                </div>
+                <div>
+                    <label for="light">light:</label>
+                    <input [(ngModel)]="selectedPlant.light" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
