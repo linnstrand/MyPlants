@@ -15,15 +15,15 @@ export class PlantService {
   }
 
   deletePlant(plant: Plant) {
-    return this.http.delete(`${api}/plants/${plant.id}`);
+    return this.http.delete(`${api}/plant/${plant.id}`);
   }
 
   addPlant(plant: Plant) {
-    return this.http.post<Plant>(`${api}/plants`, plant);
+    return this.http.post<Plant>(`${api}/plant/`, plant);
   }
 
   updatePlant(plant: Plant) {
-    return this.http.put<Plant>(`${api}/plants/${plant.id}`, plant);
+    return this.http.put<Plant>(`${api}/plant/${plant.id}`, plant);
   }
 
 }

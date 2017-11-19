@@ -9,17 +9,24 @@
         </li>
     </ul>
     <div class='editarea'>
-        <div>
-            <div *ngIf="selectedPlant" class='editplant'>
+        <button (click)="enableAddMode()">Add New Plant</button>
+        <div *ngIf="selectedPlant" class='editplant'>
+            <div class="editfields">
+                <div>
+                    <label for="id">id:</label>
+                    <input [(ngModel)]="selectedPlant.id">
+                </div>
                 <div>
                     <label for="name">name:</label>
-                    <input [(ngModel)]="selectedPlant.name">
+                    <input [(ngModel)]="selectedPlant.name" placeholder="name">
                 </div>
                 <div>
                     <label for="light">light:</label>
-                    <input [(ngModel)]="selectedPlant.light" />
+                    <input [(ngModel)]="selectedPlant.light" placeholder="light" />
                 </div>
             </div>
+            <button (click)="cancel()">Cancel</button>
+            <button (click)="save()">Save</button>
         </div>
     </div>
 </div>
