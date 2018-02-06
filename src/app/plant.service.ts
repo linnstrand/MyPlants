@@ -11,7 +11,7 @@ export class PlantService {
   constructor(private http: HttpClient) { }
 
   getPlants() {
-    return this.http.get<Array<Plant>>(`${api}/plants`);
+    return this.http.get<any>(`${api}/plants`);
   }
 
   deletePlant(plant: Plant) {

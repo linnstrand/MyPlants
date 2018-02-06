@@ -3,4 +3,5 @@ export class Plant {
     light: string;
     water: string;
     care: string;
+    id?: string;
 }

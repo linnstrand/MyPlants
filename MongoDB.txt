@@ -1,0 +1,52 @@
+MongoDB
+Bson, not Json
+
+MONGO SHELL
+Start MongoDB database process:
+	./mongod.exe => access to mongo shell
+
+Connect to MongoDB 
+	./mongo.exe	
+
+create Database
+	use test
+	
+Create Collection
+	db.createCollection(name);
+	
+Add Document
+	db.cars.insert({
+	name: 'Honda',
+	make: 'accord',
+	year: 2010
+	});
+	
+Show Documents
+	db.cars.find().pretty()
+
+Change Document	
+	db.cars.update({
+	name:'Honda'},
+		 {$set:{
+		 name:'ford'
+		 }
+	 })
+	 
+Add to document 
+	db.cars.update({
+		name:'ford' },
+		{$set:{ transmission:'automatic' }
+		},{$upsert:true})
+	 
+	 
+Schema = Collection
+
+Datatypes: string, number, date, array, boolean, ObjectId (Buffer(image, audio, video= Mixed)
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 

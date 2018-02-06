@@ -2,7 +2,7 @@ const Plant = require('./plant.model');
 
 require('./mongo').connect();
 
-function getPlants(req, res) {
+function getAll(req, res) {
     const query = Plant.find({});
     query.exec()
         .then(plants => {
@@ -15,9 +15,12 @@ function getPlants(req, res) {
 
 }
 
-function postPlant(req, res) {
-    const originalPlant = { id: req.body.id, name: req.body.name, light: req.body.light };
-    const plant = new Plant(originalPlant);
+function save(req, res) {
+    const plant = new Plant({
+        id: req.body.id,
+        name: req.body.name,
+        light: req.body.light
+    });
 
     plant.save(error => {
         if (checkServerError(req, res)) return;
@@ -32,5 +35,5 @@ function checkServerError(res, error) {
     }
 }
 module.exports = {
-    getPlants, postPlant
+    getAll, save
 };

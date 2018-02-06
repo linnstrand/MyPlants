@@ -7,9 +7,9 @@ import { PlantService } from './plant.service';
   templateUrl: './plants.component.html'
 })
 export class PlantsComponent implements OnInit {
-  addingPlant = false;
-  plants: any = [];
-  selectedPlant: Plant;
+  public addingPlant = false;
+  public plants: any = [];
+  public selectedPlant: Plant;
 
   constructor(private plantService: PlantService) { }
 

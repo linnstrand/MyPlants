@@ -13,6 +13,4 @@ const plantSchema = new Schema(
         read: 'nearest'
     });
 
-const Plant = mongoose.model('Plant', plantSchema);
-
-module.exports = Plant;
+const Plant = module.exports = mongoose.model('Plant', plantSchema);
