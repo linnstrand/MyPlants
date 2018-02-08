@@ -32,6 +32,7 @@ class Server {
     }
 
     initDbSeeder() {
+        console.log('opening db');
         database.open(() => {
             seeder.init();
         });
