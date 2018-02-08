@@ -2,14 +2,25 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-const mongoUri = 'mongodb://localhost:27017/plants';
+const connectionString = 'mongodb://localhost:27017/plants'
 
-module.exports = {
-    connectionString
-};
+class Database {
 
-function connect() {
-    mongoose.connect(env.connectionString, { useMongoClient: true });
+    open() {
+        mongoose.connect(connectionString, {}, (err) => {
+            if (err) {
+                console.log('Connection Failed: ' + err);
+            }
+        });
+        mongoose.connection.on('error', err => {
+            console.log('Error connecting to MongoDB: ' + err);
+        });
+
+        mongoose.connection.once('open', () => {
+            console.log('Connection open ');
+        })
+    }
 }
 
-module.exports = { connect };
+
+module.exports = new Database();

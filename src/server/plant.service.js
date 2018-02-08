@@ -1,6 +1,5 @@
 const Plant = require('./plant.model');
-
-require('./mongo').connect();
+const database = require('./mongo');
 
 function getAll(req, res) {
     const query = Plant.find({});
