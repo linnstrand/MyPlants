@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PlantsComponent } from './plants.component';
 import { PlantService } from './plant.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { PlantService } from './plant.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [PlantService],
   bootstrap: [AppComponent]

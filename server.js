@@ -2,9 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const routes = require('./routes');
-const database = require('./mongo')
-const seeder = require('./seeder');
+const routes = require('./server/routes');
+const database = require('./server/mongo')
+const seeder = require('./server/seeder');
 const root = './';
 const port = process.env.port || 3000;
 const app = express();
@@ -19,14 +19,14 @@ class Server {
     initExpressMiddleWare() {
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: false }));
-        app.use(express.static(path.join(root, 'dist')));
+        app.use(express.static(path.join(__dirname, 'dist')));
 
         // serving routes
         app.use('/api', routes);
 
         //Serve app
         app.get('*', (rec, res) => {
-            res.sendFile('dist/index.html', { root });
+            res.sendFile(path.join(__dirname, 'dist/index.html'));
         });
 
     }

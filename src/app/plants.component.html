@@ -2,9 +2,7 @@
     <ul class='plants'>
         <li *ngFor='let plant of plants' (click)='onSelect(plant)' [class.selected]='plant===selectedPlant'>
             <div class='plant-element'>
-                <button class="delete-button" (click)="deletePlant(plant)">Delete</button>
-                <div class='name'>{{plant?.name}}</div>
-                <div class='light'>{{plant?.light}}</div>
+                <div class='name'>{{plant.name}}</div>
             </div>
         </li>
     </ul>
@@ -13,16 +11,21 @@
         <div *ngIf="selectedPlant" class='editplant'>
             <div class="editfields">
                 <div>
-                    <label for="id">id:</label>
-                    <input [(ngModel)]="selectedPlant.id">
-                </div>
-                <div>
                     <label for="name">name:</label>
-                    <input [(ngModel)]="selectedPlant.name" placeholder="name">
+                    <input class="form-field" [(ngModel)]="selectedPlant.name" placeholder="name">
+                    <button class="delete-button" (click)="deletePlant(plant)">Delete</button>
                 </div>
                 <div>
                     <label for="light">light:</label>
-                    <input [(ngModel)]="selectedPlant.light" placeholder="light" />
+                    <textarea rows="3" class="form-field" [(ngModel)]="selectedPlant.light"></textarea>
+                </div>
+                <div>
+                    <label for="water">water:</label>
+                    <textarea [(ngModel)]="selectedPlant.water"></textarea>
+                </div>
+                <div>
+                    <label for="care">care:</label>
+                    <textarea [(ngModel)]="selectedPlant.care"></textarea>
                 </div>
             </div>
             <button (click)="cancel()">Cancel</button>

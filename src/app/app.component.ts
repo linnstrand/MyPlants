@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
       <h1>Welcome to Plants!</h1>
-      <app-plants></app-plants>
+      <router-outlet></router-outlet>
        `,
   styles: []
 })
