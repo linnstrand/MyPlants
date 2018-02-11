@@ -5,7 +5,6 @@ const path = require('path');
 const routes = require('./server/routes');
 const database = require('./server/mongo')
 const seeder = require('./server/seeder');
-const root = './';
 const port = process.env.port || 3000;
 const app = express();
 

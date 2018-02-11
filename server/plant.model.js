@@ -3,9 +3,21 @@ const Schema = mongoose.Schema;
 
 const plantSchema = new Schema(
     {
-        name: String,
-        light: String,
-        water: String,
+        name: { type: String, unique: true, required: true },
+        light: {
+            type: Number,
+            min: 0,
+            max: 5,
+            get: v => Math.round(v),
+            set: v => Math.round(v),
+        },
+        water: {
+            type: Number,
+            min: 0,
+            max: 4,
+            get: v => Math.round(v),
+            set: v => Math.round(v),
+        },
         care: String
     },
     {

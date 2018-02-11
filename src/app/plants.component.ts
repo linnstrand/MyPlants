@@ -11,6 +11,21 @@ export class PlantsComponent implements OnInit {
   public plants: any = [];
   public selectedPlant: Plant;
 
+  Water = Object.freeze({
+    1: 'Very Low',
+    2: 'Low',
+    3: 'Medium',
+    4: 'High',
+  });
+
+  Light = Object.freeze({
+    1: 'Dark',
+    2: 'Low',
+    3: 'Medium',
+    4: 'High',
+    5: 'Very Bright'
+  });
+
   constructor(private plantService: PlantService) { }
 
   ngOnInit() {

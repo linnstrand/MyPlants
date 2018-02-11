@@ -6,27 +6,27 @@ class DBSeeder {
         this.plants = [
             new Plant({
                 name: 'Monstera',
-                light: 'Bright but no direct sunlight',
-                water: 'Between watering times allow the soil to become dry to the touch within the top couple of inches or so of soil.',
-                care: 'Mist leaves with water'
+                light: 4,
+                water: 3,
+                care: 'Place bright but no direct sunlight. Between watering times allow the soil to become dry to the touch within the top couple of inches or so of soil. Mist leaves with water'
             }),
             new Plant({
                 name: 'African Violet',
-                light: 'Bright light, but might burn',
-                water: 'Water when top soil is dry',
-                care: 'high humidity and plenty of gentle misting (with luke warm water, not in direct sunlight and only the leaves).'
+                light: 4,
+                water: 3,
+                care: 'Bright light, but might burn. Water when top soil is dry, high humidity and plenty of gentle misting (with luke warm water, not in direct sunlight and only the leaves).'
             }),
             new Plant({
                 name: 'Boston Fern',
-                light: 'Avoid direct sunlight',
-                water: 'Keep soil moist, but not soggy',
-                care: 'Prefers high humidity'
+                light: 2,
+                water: 4,
+                care: 'Avoid direct sunlight. Keep soil moist, but not soggy, Prefers high humidity'
             }),
             new Plant({
                 name: 'Fiddle Leaf Fig',
-                light: 'Bright spot, but avoid afternoon sun',
-                water: 'Water when top soil is dry, overwatering is worse then underwatering.',
-                care: 'Too low humidity levels with cause brown leaves.'
+                light: 4,
+                water: 3,
+                care: 'Bright spot, but avoid afternoon sun. Water when top soil is dry, overwatering is worse then underwatering. Too low humidity levels with cause brown leaves.'
             }),
         ]
 

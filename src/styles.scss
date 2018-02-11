@@ -9,7 +9,7 @@ h2 {
 
 body {
     margin: 2em;
-    background-color: #e0f0e1;
+    background-color: #fff;
 }
 
 body,
@@ -75,10 +75,8 @@ div {
         border-radius: 4px;
         width: 17em;
         &:hover {
-            color: #607d8b;
-            color: rgb(0, 120, 215);
+            color: #007505;;
             background-color: #ddd;
-            left: .1em;
         }
         &.selected:hover {
             /*background-color: #BBD8DC !important;*/
