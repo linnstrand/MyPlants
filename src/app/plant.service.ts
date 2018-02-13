@@ -11,11 +11,11 @@ export class PlantService {
   constructor(private http: HttpClient) { }
 
   getPlants() {
-    return this.http.get<any>(`${api}/plants`);
+    return this.http.get<Plant[]>(`${api}/plants`);
   }
 
   deletePlant(plant: Plant) {
-    return this.http.delete(`${api}/plant/${plant.id}`);
+    return this.http.delete<Plant>(`${api}/plant/${plant}`);
   }
 
   addPlant(plant: Plant) {

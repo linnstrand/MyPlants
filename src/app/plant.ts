@@ -1,7 +1,8 @@
 export class Plant {
-    name: string;
-    light: string;
-    water: string;
+    name: String;
+    alias: String;
+    light: Number;
+    water: Number;
     care: string;
     id?: string;
 }

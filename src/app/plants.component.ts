@@ -8,7 +8,7 @@ import { PlantService } from './plant.service';
 })
 export class PlantsComponent implements OnInit {
   public addingPlant = false;
-  public plants: any = [];
+  plants: Plant[] = [];
   public selectedPlant: Plant;
 
   Water = Object.freeze({
@@ -45,8 +45,8 @@ export class PlantsComponent implements OnInit {
   }
 
   deletePlant(plant: Plant) {
+    this.plants = this.plants.filter(p => p !== plant);
     return this.plantService.deletePlant(plant).subscribe(plants => {
-      this.plants = plants || [];
     });
   }
 
