@@ -13,8 +13,8 @@
                             <h6 class="card-subtitle mb-2 text-muted font-italic">{{plant.latin}}</h6>
                             <div>
                                 <div class='card-text'>
-                                    <span>Light: {{Light[plant.light]}}</span>
-                                    <span>Water: {{Water[plant.water]}}</span>
+                                    <span>Light: {{plant.light}}</span>
+                                    <span>Water: {{plant.water}}</span>
                                 </div>
                             </div>
                         </div>
@@ -23,51 +23,16 @@
             </div>
         </div>
         <div class='col editarea'>
-            <div *ngIf="selectedPlant" class='editplant'>
-                <form>
-                    <div class="form-group">
-                        <div class="form-group">
-                            <label for="name">name:</label>
-                            <input class="form-control" [(ngModel)]="selectedPlant.name" placeholder="name">
-                        </div>
-                        <div class="form-group">
-                            <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="selectedPlant.light">
-                                <label ngbButtonLabel>
-                                    <input ngbButton type="radio" value="1"> Very Low
-                                </label>
-                                <label ngbButtonLabel>
-                                    <input ngbButton type="radio" value="2"> Low
-                                </label>
-                                <label ngbButtonLabel>
-                                    <input ngbButton type="radio" [value]="3"> Medium
-                                </label>
-                                <label ngbButtonLabel>
-                                    <input ngbButton type="radio" [value]="4"> High
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="selectedPlant.water">
-                                <label ngbButtonLabel>
-                                    <input ngbButton type="radio" value="2"> Low
-                                </label>
-                                <label ngbButtonLabel>
-                                    <input ngbButton type="radio" [value]="3"> Medium
-                                </label>
-                                <label ngbButtonLabel>
-                                    <input ngbButton type="radio" [value]="4"> High
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="care">care:</label>
-                            <textarea class="form-control" [(ngModel)]="selectedPlant.care"></textarea>
-                        </div>
-                    </div>
-                    <button class="btn" (click)="cancel()">Cancel</button>
-                    <button class="btn" (click)="save()">Save</button>
-                    <button class="btn" (click)="deletePlant(selectedPlant)">Delete</button>
-                </form>
+            <div *ngIf="selectedPlant">
+                <app-plant-form [plant]="selectedPlant" *ngIf="editingMode" (savePlant)="save()">
+                    <button class="btn btn-outline-secondary" (click)="cancel()">Cancel</button>
+                    <button class="btn btn-outline-danger" (click)="deletePlant(selectedPlant)">Delete</button>
+                </app-plant-form>
+                <app-plant-detail [plant]="selectedPlant" *ngIf="!editingMode" (editPlant)="setEditMode()">
+                    <button class="btn btn-outline-secondary" (click)="cancel()">Cancel</button>
+                    <button class="btn btn-outline-danger" (click)="deletePlant(selectedPlant)">Delete</button>
+                </app-plant-detail>
+
             </div>
         </div>
     </div>

@@ -1,0 +1,64 @@
+<form #plantForm="ngForm">
+    <h4>Edit plant</h4>
+    <div class="form-group">
+        <div class="form-group">
+            <label for="name">name</label>
+            <input class="form-control" [(ngModel)]="plant.name" name="name" placeholder="Namn" required>
+        </div>
+        <div class="form-group">
+            <label for="latin">latin</label>
+            <input class="form-control" [(ngModel)]="plant.latin" name="latin" value="plant.latin" value="plant.latin" placeholder="Latinskt namn"
+                required>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <label>Light</label>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.light" name="lightVeryLow" id="lightVeryLow" class="form-check-input" type="radio" value="1">
+                    <label class="form-check-label" for="lightVeryLow">Very Low</label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.light" name="lightLow" id="lightLow" class="form-check-input" type="radio" value="2">
+                    <label class="form-check-label" for="lightLow">Low</label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.light" name="lightMedium" id="lightMedium" class="form-check-input" type="radio" [value]="3">
+                    <label class="form-check-label" for="lightMedium">Medium</label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.light" name="lightHigh" id="lightHigh" class="form-check-input" type="radio" [value]="4">
+                    <label class="form-check-label" for="lightHigh">High</label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.light" name="lightVeryHigh" id="lightVeryHigh" class="form-check-input" type="radio" [value]="5">
+                    <label class="form-check-label" for="lightVeryHigh">Very Bright</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <label>Water</label>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.water" id="waterVeryLow" name="waterVeryLow" class="form-check-input" type="radio" value="1">
+                    <label class="form-check-label" for="waterVeryLow">Very Low</label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.water" id="waterLow" name="waterLow" class="form-check-input" type="radio" value="2">
+                    <label class="form-check-label" for="waterLow">Low</label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.water" id="waterMedium" name="waterMedium" class="form-check-input" type="radio" [value]="3">
+                    <label class="form-check-label" for="waterMedium">Medium</label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="plant.water" id="waterHigh" name="waterMedium" class="form-check-input" type="radio" [value]="4">
+                    <label class="form-check-label" for="waterHigh">High</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="care">care:</label>
+            <textarea rows="10" class="form-control" [(ngModel)]="plant.care" value="plant.care" name="care" id="care"></textarea>
+        </div>
+    </div>
+    <button class="btn btn-light" (click)="save()">Save</button>
+    <ng-content></ng-content>
+</form>

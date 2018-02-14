@@ -14,6 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { PlantComponent } from './plant.component';
 import { PlantDetailComponent } from './plant-detail.component';
 import { InMemoryDataService } from './in-memory-data.service';
+import { PlantFormComponent } from './plant-form.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppComponent,
     PlantsComponent,
     PlantComponent,
-    PlantDetailComponent
+    PlantDetailComponent,
+    PlantFormComponent
   ],
   imports: [
     BrowserModule,

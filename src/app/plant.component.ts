@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Plant } from './plant';
+import { Plant } from './models/plant';
 
 @Component({
   selector: 'app-plant',
