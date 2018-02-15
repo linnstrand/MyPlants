@@ -56,8 +56,8 @@ export class PlantsComponent implements OnInit {
     if (this.addingPlant) {
       this.plantService.addPlant(this.selectedPlant).subscribe(() => {
         this.addingPlant = false;
-        this.selectedPlant = null;
         this.plants.push(this.selectedPlant);
+        this.selectedPlant = null;
       });
     } else {
       this.plantService.updatePlant(this.selectedPlant).subscribe(plant => {
