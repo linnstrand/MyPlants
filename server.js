@@ -17,7 +17,9 @@ class Server {
 
     initExpressMiddleWare() {
         app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(bodyParser.urlencoded({
+            extended: false
+        }));
         app.use(express.static(path.join(__dirname, 'dist')));
 
         // serving routes

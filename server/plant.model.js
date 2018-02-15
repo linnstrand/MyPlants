@@ -19,6 +19,7 @@ const plantSchema = new Schema({
         max: 5,
         get: v => Math.round(v),
         set: v => Math.round(v),
+        sparse: true
     },
     water: {
         type: Number,
@@ -26,6 +27,7 @@ const plantSchema = new Schema({
         max: 4,
         get: v => Math.round(v),
         set: v => Math.round(v),
+        sparse: true
     },
     care: String
 }, {

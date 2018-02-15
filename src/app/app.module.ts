@@ -6,7 +6,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-
 import { AppComponent } from './app.component';
 import { PlantsComponent } from './plants.component';
 import { PlantService } from './plant.service';
@@ -31,9 +30,7 @@ import { PlantFormComponent } from './plant-form.component';
     NgbModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    // HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { dataEncapsulation: false, passThruUnknownUrl: true } )
   ],
   providers: [PlantService],
   bootstrap: [AppComponent]

@@ -30,7 +30,14 @@ export class PlantService {
   }
 
   updatePlant(plant: Plant) {
-    return this.http.put<Plant>(`${this.api}`, plant);
+    return this.http.put<Plant>(`${this.api}`, plant)
+      .pipe(
+        tap((_ => console.log('updating plant ' + plant.name)),
+          catchError((err: Error) => {
+            console.log(err);
+            return Observable.throw(err)
+          })
+        ));
   }
 
 }
