@@ -4,21 +4,10 @@
 </nav>
 <div class="container-fluid content">
     <div class="row">
-        <div class="col plants">
+        <div class="col-md-6-auto plants">
             <div class="row">
-                <div class="col-sm-6 card-container" *ngFor='let plant of plants' (click)='onSelect(plant)' [class.selected]='plant===selectedPlant'>
-                    <div class="card border-success">
-                        <div class='card-body plant-element'>
-                            <h5 class="card-title text-success">{{plant.name}}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted font-italic">{{plant.latin}}</h6>
-                            <div>
-                                <div class='card-text'>
-                                    <span>Light: {{plant.light}}</span>
-                                    <span>Water: {{plant.water}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-6 card-container" *ngFor='let plant of plants$ |async' (click)='onSelect(plant)' [class.selected]='plant===selectedPlant'>
+                    <app-plant [plant]="plant"></app-plant>
                 </div>
             </div>
         </div>

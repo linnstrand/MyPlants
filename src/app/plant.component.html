@@ -1,6 +1,16 @@
-<div class="card">
-    <div class='card-body plant-element'>
-        <h5 class="card-title">{{plant.name}}</h5>
-        <p class='card-text'>{{plant.care}}</p>
+<div class="card border-success">
+    <div class='card-body plant-element row'>
+        <div class="col-auto">
+            <h5 class="card-title text-success">{{plant.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted font-italic">{{plant.latin}}</h6>
+        </div>
+        <div class="col care-symbols">
+            <div class='card-text'>
+                <span *ngFor="let l of light">&#9728;</span>
+            </div>
+            <div class='card-text'>
+                <span *ngFor="let w of water">💧</span>
+            </div>
+        </div>
     </div>
 </div>

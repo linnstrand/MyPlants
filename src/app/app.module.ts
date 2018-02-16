@@ -30,7 +30,7 @@ import { PlantFormComponent } from './plant-form.component';
     NgbModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
-    // HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, { dataEncapsulation: false, passThruUnknownUrl: true } )
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false, passThruUnknownUrl: true })
   ],
   providers: [PlantService],
   bootstrap: [AppComponent]

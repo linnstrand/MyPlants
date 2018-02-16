@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Plant } from './models/plant';
-import { Water, LIGHT } from './models/constants';
+import { Water, Light } from './models/constants';
 
 @Component({
   selector: 'app-plant-form',

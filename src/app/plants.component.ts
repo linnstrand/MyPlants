@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { Plant } from './models/plant';
 import { PlantService } from './plant.service';
 
@@ -8,7 +9,7 @@ import { PlantService } from './plant.service';
 })
 export class PlantsComponent implements OnInit {
   addingPlant = false;
-  plants: Plant[] = [];
+  plants$: Observable<Plant[]>;
   selectedPlant: Plant;
   editingMode = false;
 
@@ -25,13 +26,11 @@ export class PlantsComponent implements OnInit {
   }
 
   getPlants() {
-    return this.plantService.getPlants().subscribe(plants => {
-      this.plants = plants;
-    });
+    this.plants$ = this.plantService.getPlants();
   }
 
   deletePlant(plant: Plant) {
-    this.plants = this.plants.filter(p => p !== plant);
+    //this.plants = this.plants.filter(p => p !== plant);
     return this.plantService.deletePlant(plant).subscribe(plants => {
       this.selectedPlant = null;
     });
@@ -49,6 +48,8 @@ export class PlantsComponent implements OnInit {
     this.selectedPlant = plant;
   }
 
+  // toArray(nr: Number) => Array(nr).
+
   setEditMode(): void {
     this.editingMode = true;
   }
@@ -57,7 +58,7 @@ export class PlantsComponent implements OnInit {
     if (this.addingPlant) {
       this.plantService.addPlant(this.selectedPlant).subscribe(() => {
         this.addingPlant = false;
-        this.plants.push(this.selectedPlant);
+        //this.plants.push(this.selectedPlant);
         this.selectedPlant = null;
       });
     } else {
