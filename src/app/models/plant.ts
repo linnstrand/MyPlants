@@ -7,5 +7,5 @@ export class Plant {
     light: String;
     water: Water;
     care: string;
-    id?: string;
+    _id?: string;
 }

@@ -15,7 +15,7 @@ export class PlantService {
   }
 
   deletePlant(plant: Plant) {
-    return this.http.delete<Plant>(`${this.api}/${plant.id}`);
+    return this.http.delete<Plant>(`${this.api}/${plant._id}`);
   }
 
   addPlant(plant: Plant): Observable<Plant> {

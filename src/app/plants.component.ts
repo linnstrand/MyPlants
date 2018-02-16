@@ -33,6 +33,7 @@ export class PlantsComponent implements OnInit {
   deletePlant(plant: Plant) {
     this.plants = this.plants.filter(p => p !== plant);
     return this.plantService.deletePlant(plant).subscribe(plants => {
+      this.selectedPlant = null;
     });
   }
 

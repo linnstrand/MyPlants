@@ -1,7 +1,7 @@
 const Plant = require('./plant.model');
 const database = require('./mongo');
 
-function getAll(req, res) {
+function getPlants(req, res) {
     const query = Plant.find({});
     query.exec()
         .then(plants => {
@@ -14,12 +14,14 @@ function getAll(req, res) {
 
 }
 
-function save(req, res) {
+function postPlant(req, res) {
     const plant = new Plant({
-        id: req.body.id,
         name: req.body.name,
+        alias: req.body.alias,
         latin: req.body.latin,
-        light: req.body.light
+        light: req.body.light,
+        light: req.body.water,
+        care: req.body.care
     });
 
     plant.save(error => {
@@ -29,41 +31,60 @@ function save(req, res) {
     });
 }
 
+function putPlant(req, res) {
+    Plant.findOne({ _id: req.body._id }, (err, plant) => {
+        if (checkServerError(res, err) || !checkFound(res, plant)) return;
+        plant.name = req.body.name;
+        plant.alias = req.body.alias;
+        plant.latin = req.body.latin;
+        plant.light = req.body.light || 0;
+        plant.water = req.body.water || 0;
+        plant.care = req.body.care;
+
+        // Save the updated document back to the database
+        plant.save((err) => {
+            if (checkServerError(res, err)) return;
+            res.status(200).json(plant);
+            console.log('Plant updated successfully');
+        });
+    });
+
+}
+
+function deletePlant(req, res) {
+    const id = req.params.id;
+    Plant.findOneAndRemove({ _id: id })
+        .then(plant => {
+            if (!checkFound(res, plant)) {
+                res.status(200).json(plant);
+                console.log('Plant deleted successfully');
+            }
+        })
+        .catch(err => {
+            if (checkServerError(res, err)) return;
+        });
+}
+
+
 function checkServerError(res, error) {
     if (error) {
         res.status(500).send(error);
+        console.log('Error: ' + error.message);
+        return error;
     }
 }
 
-function update(req, res) {
-    if (req.body._id_id) {
-        res.status(500).send(err);
+function checkFound(res, plant) {
+    if (!plant) {
+        res.status(404).send('Plant not found');
+        return;
     }
-    let p = Plant.findById(req.body._id_id)
-        .exec((err, p) => {
-            if (err || !p) {
-                res.status(500).send(err);
-                return;
-            }
-            p.name = req.body.name;
-            p.alias = req.body.alias;
-            p.latin = req.body.latin;
-            p.light = req.body.light || 0;
-            p.water = req.body.water || 0;
-            p.care = req.body.care;
-
-            // Save the updated document back to the database
-            p.save((err, p) => {
-                if (err) {
-                    res.status(500).send(err)
-                }
-                res.status(200).send(p);
-            });
-        });
-
+    return plant;
 }
+
 module.exports = {
-    getAll,
-    save,
-    update
+    getPlants,
+    postPlant,
+    putPlant,
+    deletePlant
 };
