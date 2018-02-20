@@ -10,6 +10,24 @@
     font-size: 0.8rem;
 }
 
-.editarea {
-    max-width: 500px;
+.show-linebreak {
+    white-space: pre-wrap;
+}
+
+.plants {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.border-success:hover {
+    background-color: rgba(#28a745, 0.1);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .editarea {
+        position: fixed;
+        height: 100%;
+        background-color: white;
+    }
 }

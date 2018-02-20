@@ -9,7 +9,7 @@ import { PlantService } from './plant.service';
 })
 export class PlantsComponent implements OnInit {
   addingPlant = false;
-  plants$: Observable<Plant[]>;
+  plants: Plant[];
   selectedPlant: Plant;
   editingMode = false;
 
@@ -26,12 +26,14 @@ export class PlantsComponent implements OnInit {
   }
 
   getPlants() {
-    this.plants$ = this.plantService.getPlants();
+    this.plantService.getPlants().subscribe((plants: Plant[]) => {
+      this.plants = plants;
+    });;
   }
 
   deletePlant(plant: Plant) {
-    //this.plants = this.plants.filter(p => p !== plant);
-    return this.plantService.deletePlant(plant).subscribe(plants => {
+    this.plants = this.plants.filter(p => p !== plant);
+    this.plantService.deletePlant(plant).subscribe(() => {
       this.selectedPlant = null;
     });
   }
@@ -48,21 +50,19 @@ export class PlantsComponent implements OnInit {
     this.selectedPlant = plant;
   }
 
-  // toArray(nr: Number) => Array(nr).
-
   setEditMode(): void {
     this.editingMode = true;
   }
 
   save() {
     if (this.addingPlant) {
-      this.plantService.addPlant(this.selectedPlant).subscribe(() => {
-        this.addingPlant = false;
-        //this.plants.push(this.selectedPlant);
+      this.plantService.addPlant(this.selectedPlant).subscribe((plant: Plant) => {
+        this.addingPlant = false
         this.selectedPlant = null;
+        this.plants.push(plant);
       });
     } else {
-      this.plantService.updatePlant(this.selectedPlant).subscribe(plant => {
+      this.plantService.updatePlant(this.selectedPlant).subscribe((plant: Plant) => {
         this.addingPlant = false;
         this.selectedPlant = null;
       });

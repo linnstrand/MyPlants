@@ -14,10 +14,11 @@ export class PlantFormComponent implements OnInit {
   constructor() { }
 
   save(): void {
-    this.savePlant.next();
+    this.savePlant.emit();
   }
 
   ngOnInit() {
+
   }
 
 }

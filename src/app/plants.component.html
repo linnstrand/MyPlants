@@ -4,15 +4,15 @@
 </nav>
 <div class="container-fluid content">
     <div class="row">
-        <div class="col-md-6-auto plants">
-            <div class="row">
-                <div class="col-sm-6 card-container" *ngFor='let plant of plants$ |async' (click)='onSelect(plant)' [class.selected]='plant===selectedPlant'>
+        <div class="col-md-6">
+            <div class="row plants">
+                <div class="col-sm-6 card-container" *ngFor='let plant of plants' (click)='onSelect(plant)' [class.selected]='plant===selectedPlant'>
                     <app-plant [plant]="plant"></app-plant>
                 </div>
             </div>
         </div>
-        <div class='col editarea'>
-            <div *ngIf="selectedPlant">
+        <div class='col editarea' *ngIf="selectedPlant">
+            <div>
                 <app-plant-form [plant]="selectedPlant" *ngIf="editingMode" (savePlant)="save()">
                     <button class="btn btn-outline-secondary" (click)="cancel()">Cancel</button>
                     <button class="btn btn-outline-danger" (click)="deletePlant(selectedPlant)">Delete</button>

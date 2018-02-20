@@ -13,8 +13,8 @@ export class PlantComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.water = Array(this.plant.water).fill(Water[this.plant.water]);
-    this.light = Array(this.plant.light).fill(Light[this.plant.light]);
+    if (this.plant.water > 0) this.water = Array(this.plant.water).fill(Water[this.plant.water]);
+    if (this.plant.light > 0) this.light = Array(this.plant.light).fill(Light[this.plant.light]);
 
   }
 

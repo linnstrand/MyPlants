@@ -3,10 +3,10 @@
         <div class="mb-3">
             <h5 class="card-title">{{plant.name}}</h5>
             <h6 class="card-subtitle text-muted mb-2">{{plant.latin}}</h6>
-            <p class='card-text'>{{plant.care}}</p>
+            <p class='card-text show-linebreak'>{{plant.care}}</p>
         </div>
         <div class="">
-            <button class="btn btn-light" (click)="edit()">Edit</button>
+            <button class="btn btn btn-outline-success" (click)="edit()">Edit</button>
             <ng-content></ng-content>
         </div>
     </div>
